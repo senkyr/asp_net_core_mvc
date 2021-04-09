@@ -65,9 +65,16 @@ namespace MVC.Controllers
             Uzivatel uzivatel = _context.Uzivatele.Where(u => u.Jmeno == jmeno).FirstOrDefault();
 
             if (uzivatel == null)
-                return RedirectToAction("Prihlasit", "Uzivatel");
+                return RedirectToAction("Prihlaseni", "Uzivatel");
 
             return View(uzivatel);
+        }
+
+        public IActionResult Odhlaseni()
+        {
+            HttpContext.Session.Clear();
+
+            return RedirectToAction("Index", "Domov");
         }
     }
 }
