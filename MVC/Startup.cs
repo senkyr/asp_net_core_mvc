@@ -25,7 +25,7 @@ namespace MVC
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Domov}/{action=Index}/{id?}");
             });
         }
     }

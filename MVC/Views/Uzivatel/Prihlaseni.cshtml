@@ -1,0 +1,16 @@
+﻿@{
+    Layout = "_Layout";
+
+    ViewData["Title"] = "Přihlášení";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<form method="post" action="/Uzivatel/Prihlaseni">
+    <input type="text" name="jmeno" placeholder="Jméno..." /><br />
+    <input type="password" name="heslo" placeholder="Heslo..." /><br />
+    <input type="submit" value="Přihlásit se" />
+</form>
+
+<a href="/Uzivatel/Registrace">Potřebuji účet</a>
+<a href="/Domov/Index">Domů</a>

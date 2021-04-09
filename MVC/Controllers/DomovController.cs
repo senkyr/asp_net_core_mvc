@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace MVC
+namespace MVC.Controllers
 {
-    public class HomeController : Controller
+    public class DomovController : Controller
     {
         public IActionResult Index()
         {
