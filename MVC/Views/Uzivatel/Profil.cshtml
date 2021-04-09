@@ -1,0 +1,11 @@
+﻿@model MVC.Models.Uzivatel; 
+
+@{
+    ViewData["Title"] = "Profil";
+
+    ViewData["Uzivatel"] = Model.Jmeno;
+}
+
+<h2>Profil</h2>
+
+<p>Jste přihlášeni jako <b>@ViewData["Uzivatel"]</b>.</p>

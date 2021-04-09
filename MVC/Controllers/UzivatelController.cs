@@ -2,6 +2,7 @@
 using MVC.Models;
 using MVC.Data;
 using System.Linq;
+using Microsoft.AspNetCore.Http;
 
 namespace MVC.Controllers
 {
@@ -52,7 +53,21 @@ namespace MVC.Controllers
             if (!BCrypt.Net.BCrypt.Verify(heslo, u.Heslo))
                 return RedirectToAction("Prihlaseni", "Uzivatel");
 
-            return RedirectToAction("Vypis", "Prispevky");
+            HttpContext.Session.SetString("Uzivatel", jmeno);
+
+            return RedirectToAction("Profil", "Uzivatel");
+        }
+
+        public IActionResult Profil()
+        {
+            string jmeno = HttpContext.Session.GetString("Uzivatel");
+
+            Uzivatel uzivatel = _context.Uzivatele.Where(u => u.Jmeno == jmeno).FirstOrDefault();
+
+            if (uzivatel == null)
+                return RedirectToAction("Prihlasit", "Uzivatel");
+
+            return View(uzivatel);
         }
     }
 }
