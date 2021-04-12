@@ -5,10 +5,10 @@ using Microsoft.Extensions.Hosting;
 
 using Microsoft.Extensions.Configuration;
 using Microsoft.EntityFrameworkCore;
-using MVC.Data;
+using MvcPoznamky.Data;
 using System;
 
-namespace MVC
+namespace MvcPoznamky
 {
     public class Startup
     {
@@ -30,7 +30,7 @@ namespace MVC
 
             services.AddControllersWithViews();
 
-            services.AddDbContext<MvcContext>(options =>
+            services.AddDbContext<MvcPoznamkyContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("MvcContext")));
         }
 

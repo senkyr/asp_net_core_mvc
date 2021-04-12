@@ -1,11 +1,11 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using MVC.Models;
+using MvcPoznamky.Models;
 
-namespace MVC.Data
+namespace MvcPoznamky.Data
 {
-    public class MvcContext : DbContext
+    public class MvcPoznamkyContext : DbContext
     {
-        public MvcContext(DbContextOptions<MvcContext> options) : base(options)
+        public MvcPoznamkyContext(DbContextOptions<MvcPoznamkyContext> options) : base(options)
         {
         }
 

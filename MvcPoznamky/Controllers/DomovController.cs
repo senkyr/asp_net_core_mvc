@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace MVC.Controllers
+namespace MvcPoznamky.Controllers
 {
     public class DomovController : Controller
     {

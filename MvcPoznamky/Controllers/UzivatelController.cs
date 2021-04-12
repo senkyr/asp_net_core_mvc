@@ -1,16 +1,16 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using MVC.Models;
-using MVC.Data;
+using MvcPoznamky.Models;
+using MvcPoznamky.Data;
 using System.Linq;
 using Microsoft.AspNetCore.Http;
 
-namespace MVC.Controllers
+namespace MvcPoznamky.Controllers
 {
     public class UzivatelController : Controller
     {
-        private readonly MvcContext _context;
+        private readonly MvcPoznamkyContext _context;
 
-        public UzivatelController(MvcContext context)
+        public UzivatelController(MvcPoznamkyContext context)
         {
             _context = context;
         }

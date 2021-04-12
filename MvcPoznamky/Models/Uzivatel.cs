@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace MVC.Models
+namespace MvcPoznamky.Models
 {
     public class Uzivatel
     {

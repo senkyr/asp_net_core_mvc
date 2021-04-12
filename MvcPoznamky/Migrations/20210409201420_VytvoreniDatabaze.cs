@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace MVC.Migrations
+namespace MvcPoznamky.Migrations
 {
     public partial class VytvoreniDatabaze : Migration
     {
