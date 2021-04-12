@@ -1,6 +1,8 @@
-﻿@model MvcPoznamky.Models.Uzivatel; 
+﻿@model MvcPoznamky.Models.Uzivatel;
 
 @{
+    Layout = "_Layout";
+
     ViewData["Title"] = "Profil";
 
     ViewData["Uzivatel"] = Model.Jmeno;
@@ -9,4 +11,26 @@
 <h2>Profil</h2>
 
 <p>Jste přihlášeni jako <b>@ViewData["Uzivatel"]</b>.</p>
+
 <a href="/Uzivatel/Odhlaseni">Odhlásit se</a>
+<br />
+
+@if (Model.Poznamky == null)
+{
+    <a href="/Poznamka/Vytvoreni">Přidat poznámku</a>
+    <p><i>Nemáte žádné uložené poznámky.</i></p>
+}
+else
+{
+    <h3>Vaše poznámky</h3>
+    <a href="/Poznamka/Vytvoreni">Přidat poznámku</a>
+    <ul>
+        @foreach (var poznamka in Model.Poznamky)
+        {
+            <li>
+                <b>@poznamka.DatumVytvoreni</b>
+                <p>@poznamka.Text</p>
+            </li>
+        }
+    </ul>
+}

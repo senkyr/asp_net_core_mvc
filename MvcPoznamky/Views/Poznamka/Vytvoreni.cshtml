@@ -1,0 +1,15 @@
+﻿@{
+    Layout = "_Layout";
+
+    ViewData["Title"] = "Nová poznámka";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<form method="post" action="/Poznamka/Vytvoreni">
+    <textarea name="text" placeholder="Napište poznámku..."></textarea><br />
+    <input type="hidden" name="autor" value="@ViewData["Uzivatel"]" />
+    <input type="submit" value="Přidat poznámku" />
+</form>
+
+<a href="/Uzivatel/Profil">Zpět na profil</a>

@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace MvcPoznamky.Models
 {
@@ -10,5 +11,7 @@ namespace MvcPoznamky.Models
         public string Jmeno { get; set; }
         [Required]
         public string Heslo { get; set; }
+
+        public List<Poznamka> Poznamky { get; set; }
     }
 }

@@ -17,5 +17,6 @@ namespace MvcPoznamky.Data
         }
 
         public DbSet<Uzivatel> Uzivatele { get; set; }
+        public DbSet<Poznamka> Poznamky { get; set; }
     }
 }

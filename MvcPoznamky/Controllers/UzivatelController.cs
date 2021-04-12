@@ -3,6 +3,7 @@ using MvcPoznamky.Models;
 using MvcPoznamky.Data;
 using System.Linq;
 using Microsoft.AspNetCore.Http;
+using System.Collections.Generic;
 
 namespace MvcPoznamky.Controllers
 {
@@ -66,6 +67,11 @@ namespace MvcPoznamky.Controllers
 
             if (uzivatel == null)
                 return RedirectToAction("Prihlaseni", "Uzivatel");
+
+            uzivatel.Poznamky = _context.Poznamky
+                .Where(p => p.Autor.Jmeno == uzivatel.Jmeno)
+                .OrderByDescending(o => o.DatumVytvoreni)
+                .ToList();
 
             return View(uzivatel);
         }

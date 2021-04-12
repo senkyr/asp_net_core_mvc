@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MvcPoznamky.Data;
 
 namespace MvcPoznamky.Migrations
 {
     [DbContext(typeof(MvcPoznamkyContext))]
-    partial class MvcContextModelSnapshot : ModelSnapshot
+    [Migration("20210412110338_PridaniPoznamek")]
+    partial class PridaniPoznamek
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
