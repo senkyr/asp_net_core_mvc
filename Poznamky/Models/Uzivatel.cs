@@ -13,5 +13,7 @@ namespace AspPoznamky.Models
         public string Heslo { get; set; }
         
         public virtual List<Poznamka> Poznamky { get; set; }
+
+        public bool NemaPoznamky => Poznamky == null || Poznamky.Count == 0;
     }
 }

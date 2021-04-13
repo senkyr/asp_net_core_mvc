@@ -4,28 +4,26 @@
     Layout = "_Layout";
 
     ViewData["Title"] = "Profil";
-
-    ViewData["Uzivatel"] = Model.Jmeno;
 }
 
 <h2>Profil</h2>
 
-<p>Jste přihlášeni jako <b>@ViewData["Uzivatel"]</b>.</p>
+<p>Jste přihlášeni jako <b>@Model.Jmeno</b>.</p>
 
 <a href="/Uzivatel/Odhlaseni">Odhlásit se</a>
 <br />
 
-@if (ViewData["Poznamky"] == null)
+@if (Model.NemaPoznamky)
 {
-    <a href="/Poznamka/Vytvoreni">Přidat poznámku</a>
     <p><i>Nemáte žádné uložené poznámky.</i></p>
+    <a href="/Poznamka/Vytvoreni">Přidat novou poznámku</a>
 }
 else
 {
     <h3>Vaše poznámky</h3>
-    <a href="/Poznamka/Vytvoreni">Přidat poznámku</a>
+    <a href="/Poznamka/Vytvoreni">Přidat novou poznámku</a>
     <ul>
-        @foreach (var poznamka in (List<AspPoznamky.Models.Poznamka>)ViewData["Poznamky"])
+        @foreach (var poznamka in Model.Poznamky)
         {
             <li>
                 <b>@poznamka.DatumVytvoreni</b>

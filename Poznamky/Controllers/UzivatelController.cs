@@ -77,12 +77,6 @@ namespace AspPoznamky.Controllers
             if (uzivatel == null)
                 return RedirectToAction("Prihlaseni", "Uzivatel");
 
-            List<Poznamka> poznamky = _context.Poznamky
-                .Where(p => p.Autor == uzivatel)
-                .ToList();
-
-            ViewData["Poznamky"] = poznamky;
-
             return View(uzivatel);
         }
 
