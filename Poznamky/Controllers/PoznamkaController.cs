@@ -70,5 +70,28 @@ namespace AspPoznamky.Controllers
 
             return RedirectToAction("Profil", "Uzivatel");
         }
+
+        [HttpGet]
+        public IActionResult Uprava(int id)
+        {
+            Poznamka poznamka = _context.Poznamky
+                .Where(p => p.Id == id)
+                .First();
+
+            Uzivatel autor = _context.Uzivatele
+                .Where(u => u == poznamka.Autor)
+                .First();
+
+            Uzivatel prihlaseny = _context.Uzivatele
+                .Where(u => u.Jmeno == HttpContext.Session.GetString("Uzivatel"))
+                .First();
+
+            if(autor == prihlaseny)
+            {
+                return View(poznamka);
+            }
+
+            return RedirectToAction("Profil", "Uzivatel");
+        }
     }
 }
