@@ -1,0 +1,16 @@
+﻿@model AspPoznamky.Models.Poznamka
+@{
+    Layout = "_Layout";
+
+    ViewData["Title"] = "Úprava poznámky";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<form method="post" action="/Poznamka/Uprava">
+    <textarea name="text">@Model.Text</textarea><br />
+    <input type="hidden" name="id" value="@Model.Id" />
+    <input type="submit" value="Upravit poznámku" /><br />
+</form>
+
+<a href="/Uzivatel/Profil">Zpět bez úprav</a>
