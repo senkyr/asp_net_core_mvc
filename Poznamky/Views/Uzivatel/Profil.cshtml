@@ -25,11 +25,12 @@ else
     <ul>
         @foreach (var poznamka in Model.Poznamky)
         {
-            <li>
-                <b>@poznamka.DatumVytvoreni</b>
-                <p>@poznamka.Text</p>
-                <a href="/Poznamka/Smazani/@poznamka.Id">Smazat</a>
-            </li>
+        <li>
+            <b>@poznamka.DatumVytvoreni</b>
+            <p>@poznamka.Text</p>
+            <a href="/Poznamka/Uprava/@poznamka.Id">Upravit</a>
+            <a href="/Poznamka/Smazani/@poznamka.Id">Smazat</a>
+        </li>
         }
     </ul>
 }
