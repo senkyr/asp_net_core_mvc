@@ -48,7 +48,7 @@ namespace AspPoznamky.Controllers
             return RedirectToAction("Profil", "Uzivatel");
         }
 
-        public IActionResult Smazat(int id)
+        public IActionResult Smazani(int id)
         {
             Poznamka poznamka = _context.Poznamky
                 .Where(p => p.Id == id)
