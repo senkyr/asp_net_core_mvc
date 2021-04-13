@@ -26,7 +26,14 @@ else
         @foreach (var poznamka in Model.Poznamky)
         {
         <li>
-            <b>@poznamka.DatumVytvoreni</b>
+            @if (poznamka.DatumPosledniUpravy == poznamka.DatumVytvoreni)
+            {
+                <b>@poznamka.DatumVytvoreni</b>
+            }
+            else
+            {
+                <b>@poznamka.DatumPosledniUpravy (změněno)</b>
+            }
             <p>@poznamka.Text</p>
             <a href="/Poznamka/Uprava/@poznamka.Id">Upravit</a>
             <a href="/Poznamka/Smazani/@poznamka.Id">Smazat</a>

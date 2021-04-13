@@ -37,10 +37,13 @@ namespace AspPoznamky.Controllers
 
             if (uzivatel != null)
             {
+                DateTime aktualniCas = DateTime.UtcNow;
+
                 _context.Poznamky.Add(new Poznamka() {
                     Autor = uzivatel,
                     Text = text,
-                    DatumVytvoreni = DateTime.UtcNow
+                    DatumVytvoreni = aktualniCas,
+                    DatumPosledniUpravy = aktualniCas
                 });
                 _context.SaveChanges();
             }
@@ -105,6 +108,7 @@ namespace AspPoznamky.Controllers
             if (text != null && text.Trim().Length > 0)
             {
                 poznamka.Text = text;
+                poznamka.DatumPosledniUpravy = DateTime.Now;
 
                 _context.Update(poznamka);
                 _context.SaveChanges();
