@@ -1,9 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using MvcPoznamky.Models;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using MvcPoznamky.Data;
-using System.Linq;
-using Microsoft.AspNetCore.Http;
+using MvcPoznamky.Models;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace MvcPoznamky.Controllers
 {
