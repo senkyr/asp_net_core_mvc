@@ -93,5 +93,24 @@ namespace AspPoznamky.Controllers
 
             return RedirectToAction("Profil", "Uzivatel");
         }
+
+        [HttpPost]
+        [ActionName("Uprava")]
+        public IActionResult UpravaZpracovani(int id, string text)
+        {
+            Poznamka poznamka = _context.Poznamky
+                .Where(p => p.Id == id)
+                .First();
+
+            if (text != null && text.Trim().Length > 0)
+            {
+                poznamka.Text = text;
+
+                _context.Update(poznamka);
+                _context.SaveChanges();
+            }
+
+            return RedirectToAction("Profil", "Uzivatel");
+        }
     }
 }
