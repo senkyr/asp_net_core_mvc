@@ -12,6 +12,8 @@ namespace AspPoznamky.Models
         [Required]
         public DateTime DatumVytvoreni { get; set; }
         [Required]
+        public DateTime DatumPosledniUpravy { get; set; }
+        [Required]
         public virtual Uzivatel Autor { get; set; }
     }
 }
