@@ -8,10 +8,10 @@ namespace MvcPoznamky.Models
         [Key]
         public int Id { get; set; }
         [Required]
-        public Uzivatel Autor { get; set; }
+        public string Text { get; set; }
         [Required]
         public DateTime DatumVytvoreni { get; set; }
         [Required]
-        public string Text { get; set; }
+        public virtual Uzivatel Autor { get; set; }
     }
 }

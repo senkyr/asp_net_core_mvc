@@ -31,7 +31,9 @@ namespace MvcPoznamky
             services.AddControllersWithViews();
 
             services.AddDbContext<MvcPoznamkyContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("MvcContext")));
+                options
+                .UseLazyLoadingProxies()
+                .UseSqlServer(Configuration.GetConnectionString("MvcContext")));
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

@@ -21,6 +21,7 @@ namespace MvcPoznamky.Controllers
         {
             return View();
         }
+
         [HttpPost]
         [ActionName("Registrace")]
         public IActionResult RegistraceZpracovani(string jmeno, string heslo, string heslo_kontrola)
@@ -31,7 +32,10 @@ namespace MvcPoznamky.Controllers
             if(_context.Uzivatele.Where(u => u.Jmeno == jmeno).FirstOrDefault() != null)
                 return RedirectToAction("Registrace", "Uzivatel");
 
-            _context.Add(new Uzivatel() { Jmeno = jmeno, Heslo = BCrypt.Net.BCrypt.HashPassword(heslo) });
+            _context.Add(new Uzivatel() {
+                Jmeno = jmeno,
+                Heslo = BCrypt.Net.BCrypt.HashPassword(heslo)
+            });
             _context.SaveChanges();
 
             return RedirectToAction("Prihlaseni", "Uzivatel");
@@ -42,11 +46,14 @@ namespace MvcPoznamky.Controllers
         {
             return View();
         }
+
         [HttpPost]
         [ActionName("Prihlaseni")]
         public IActionResult PrihlaseniZpracovani(string jmeno, string heslo)
         {
-            Uzivatel u = _context.Uzivatele.Where(u => u.Jmeno == jmeno).FirstOrDefault();
+            Uzivatel u = _context.Uzivatele
+                .Where(u => u.Jmeno == jmeno)
+                .FirstOrDefault();
 
             if (u == null)
                 return RedirectToAction("Prihlaseni", "Uzivatel");
@@ -63,15 +70,18 @@ namespace MvcPoznamky.Controllers
         {
             string jmeno = HttpContext.Session.GetString("Uzivatel");
 
-            Uzivatel uzivatel = _context.Uzivatele.Where(u => u.Jmeno == jmeno).FirstOrDefault();
+            Uzivatel uzivatel = _context.Uzivatele
+                .Where(u => u.Jmeno == jmeno)
+                .FirstOrDefault();
 
             if (uzivatel == null)
                 return RedirectToAction("Prihlaseni", "Uzivatel");
 
-            uzivatel.Poznamky = _context.Poznamky
-                .Where(p => p.Autor.Jmeno == uzivatel.Jmeno)
-                .OrderByDescending(o => o.DatumVytvoreni)
+            List<Poznamka> poznamky = _context.Poznamky
+                .Where(p => p.Autor == uzivatel)
                 .ToList();
+
+            ViewData["Poznamky"] = poznamky;
 
             return View(uzivatel);
         }
