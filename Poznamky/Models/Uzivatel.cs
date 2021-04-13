@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace MvcPoznamky.Models
+namespace AspPoznamky.Models
 {
     public class Uzivatel
     {

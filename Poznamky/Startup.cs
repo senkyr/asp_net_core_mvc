@@ -4,10 +4,10 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using MvcPoznamky.Data;
+using AspPoznamky.Data;
 using System;
 
-namespace MvcPoznamky
+namespace AspPoznamky
 {
     public class Startup
     {
@@ -27,11 +27,13 @@ namespace MvcPoznamky
                 options.Cookie.IsEssential = true;
             });
 
-            services.AddControllersWithViews();
-
-            services.AddDbContext<MvcPoznamkyContext>(options => options
+            services.AddDbContext<AspPoznamkyContext>(options => options
                 .UseLazyLoadingProxies()
-                .UseSqlServer(Configuration.GetConnectionString("MvcContext")));
+                .UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
+            services.AddDatabaseDeveloperPageExceptionFilter();
+
+            services.AddControllersWithViews();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

@@ -1,17 +1,17 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using MvcPoznamky.Data;
-using MvcPoznamky.Models;
+using AspPoznamky.Data;
+using AspPoznamky.Models;
 using System;
 using System.Linq;
 
-namespace MvcPoznamky.Controllers
+namespace AspPoznamky.Controllers
 {
     public class PoznamkaController : Controller
     {
-        private readonly MvcPoznamkyContext _context;
+        private readonly AspPoznamkyContext _context;
 
-        public PoznamkaController(MvcPoznamkyContext context)
+        public PoznamkaController(AspPoznamkyContext context)
         {
             _context = context;
         }

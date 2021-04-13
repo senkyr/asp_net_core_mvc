@@ -1,14 +1,14 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using MvcPoznamky.Models;
+using AspPoznamky.Models;
 
-namespace MvcPoznamky.Data
+namespace AspPoznamky.Data
 {
-    public class MvcPoznamkyContext : DbContext
+    public class AspPoznamkyContext : DbContext
     {
         public DbSet<Uzivatel> Uzivatele { get; set; }
         public DbSet<Poznamka> Poznamky { get; set; }
 
-        public MvcPoznamkyContext(DbContextOptions<MvcPoznamkyContext> options) : base(options) { }
+        public AspPoznamkyContext(DbContextOptions<AspPoznamkyContext> options) : base(options) { }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

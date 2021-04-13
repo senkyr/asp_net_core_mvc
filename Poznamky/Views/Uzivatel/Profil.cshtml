@@ -1,4 +1,4 @@
-﻿@model MvcPoznamky.Models.Uzivatel;
+﻿@model AspPoznamky.Models.Uzivatel;
 
 @{
     Layout = "_Layout";
@@ -25,7 +25,7 @@ else
     <h3>Vaše poznámky</h3>
     <a href="/Poznamka/Vytvoreni">Přidat poznámku</a>
     <ul>
-        @foreach (var poznamka in (List<MvcPoznamky.Models.Poznamka>)ViewData["Poznamky"])
+        @foreach (var poznamka in (List<AspPoznamky.Models.Poznamka>)ViewData["Poznamky"])
         {
             <li>
                 <b>@poznamka.DatumVytvoreni</b>
