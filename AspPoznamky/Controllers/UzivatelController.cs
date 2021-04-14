@@ -32,7 +32,7 @@ namespace AspPoznamky.Controllers
             if(_context.Uzivatele.Where(u => u.Jmeno == jmeno).FirstOrDefault() != null)
                 return RedirectToAction("Registrace", "Uzivatel");
 
-            _context.Add(new Uzivatel() {
+            _context.Add(new Uzivatel {
                 Jmeno = jmeno,
                 Heslo = BCrypt.Net.BCrypt.HashPassword(heslo)
             });
@@ -51,14 +51,14 @@ namespace AspPoznamky.Controllers
         [ActionName("Prihlaseni")]
         public IActionResult PrihlaseniZpracovani(string jmeno, string heslo)
         {
-            Uzivatel u = _context.Uzivatele
+            Uzivatel uzivatel = _context.Uzivatele
                 .Where(u => u.Jmeno == jmeno)
                 .FirstOrDefault();
 
-            if (u == null)
+            if (uzivatel == null)
                 return RedirectToAction("Prihlaseni", "Uzivatel");
 
-            if (!BCrypt.Net.BCrypt.Verify(heslo, u.Heslo))
+            if (!BCrypt.Net.BCrypt.Verify(heslo, uzivatel.Heslo))
                 return RedirectToAction("Prihlaseni", "Uzivatel");
 
             HttpContext.Session.SetString("Uzivatel", jmeno);

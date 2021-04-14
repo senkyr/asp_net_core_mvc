@@ -39,7 +39,7 @@ namespace AspPoznamky.Controllers
             {
                 DateTime aktualniCas = DateTime.UtcNow;
 
-                _context.Poznamky.Add(new Poznamka() {
+                _context.Poznamky.Add(new Poznamka {
                     Autor = uzivatel,
                     Text = text,
                     DatumVytvoreni = aktualniCas,
