@@ -43,6 +43,8 @@ namespace AspPoznamky
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseStaticFiles();
+
             app.UseRouting();
 
             app.UseSession();
