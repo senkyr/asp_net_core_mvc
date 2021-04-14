@@ -1,0 +1,17 @@
+﻿@model AspPoznamky.Models.Uzivatel;
+
+@{
+    Layout = "_Layout";
+
+    ViewData["Title"] = "Zrušení účtu";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<form method="post" action="/Uzivatel/Zruseni">
+    <input type="password" name="heslo" placeholder="Heslem potvrďte zrušení účtu..." /><br />
+    <input type="hidden" name="id" value="@Model.Id" />
+    <input type="submit" value="Chci nevratně zrušit účet" /><br />
+</form>
+
+<a href="/Uzivatel/Profil">Zpět na profil</a>

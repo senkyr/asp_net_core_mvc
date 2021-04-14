@@ -86,5 +86,45 @@ namespace AspPoznamky.Controllers
 
             return RedirectToAction("Index", "Domov");
         }
+
+        [HttpGet]
+        public IActionResult Zruseni()
+        {
+            Uzivatel uzivatel = _context.Uzivatele
+                .Where(u => u.Jmeno == HttpContext.Session.GetString("Uzivatel"))
+                .FirstOrDefault();
+
+            if(uzivatel == null)
+                return RedirectToAction("Prihlaseni", "Uzivatel");
+
+            return View(uzivatel);
+        }
+
+        [HttpPost]
+        [ActionName("Zruseni")]
+        public IActionResult ZruseniZpracovani(int id, string heslo)
+        {
+            Uzivatel uzivatel = _context.Uzivatele
+                .Where(u => u.Id == id)
+                .FirstOrDefault();
+
+            if (uzivatel == null)
+                return RedirectToAction("Prihlaseni", "Uzivatel");
+
+            if (!BCrypt.Net.BCrypt.Verify(heslo, uzivatel.Heslo))
+                return RedirectToAction("Zruseni", "Uzivatel");
+
+            Poznamka[] poznamky = _context.Poznamky
+                .Where(p => p.Autor == uzivatel)
+                .ToArray();
+
+            _context.Poznamky
+                .RemoveRange(poznamky);
+            _context.Uzivatele
+                .Remove(uzivatel);
+            _context.SaveChanges();
+
+            return RedirectToAction("Odhlaseni", "Uzivatel");
+        }
     }
 }
